@@ -85,13 +85,13 @@ const LoginForm = () => {
               required
             />
             <div className="form-text mt-1">
-              <a href="/forgot-password" style={{ color: '#0d6efd' }}>
+              <a href="/forgot-password" style={{ color: '#064420' }}>
                 Forgot Password?
               </a>
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn w-100" style={{ backgroundColor: "#064420",color: "white",border: "none" }}>
             Submit
           </button>
         </form>

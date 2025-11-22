@@ -19,8 +19,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Use FormData only if you expect files (not needed now)
-    // For this case, send as JSON
     try {
       const response = await fetch(
         'http://localhost:5000/api/auth/register',
@@ -34,7 +32,7 @@ const Signup = () => {
 
       if (data.success) {
         localStorage.setItem('token', data.authtoken);
-        navigate('/Login');
+        navigate('/login');
       } else {
         alert(data.error || data.message || 'Signup failed.');
       }
@@ -98,7 +96,12 @@ const Signup = () => {
             <option value="admin">Admin</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn w-100"
+  style={{
+    backgroundColor: "#064420",
+    color: "white",
+    border: "none"
+  }}>
           Submit
         </button>
       </form>

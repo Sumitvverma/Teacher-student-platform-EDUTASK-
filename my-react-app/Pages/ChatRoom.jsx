@@ -18,19 +18,20 @@ export default function ChatRoom({ classCode, userName: propUserName, onClose })
   const [openForMessage, setOpenForMessage] = useState(null);
 
   
-  // try to extract user name from token if prop not provided
   let token = localStorage.getItem('token');
   let tokenName = null;
   let user='teacher';
   try {
     if (token) {
       const decoded = jwtDecode(token);
+
       tokenName = decoded.name || decoded.email || decoded._id || decoded.id;
       user=decoded.role;
     }
   } catch (e) {
     tokenName = null;
   }
+  
   const userName = propUserName || tokenName || 'Anonymous';
 
   // helper to normalize incoming messages
@@ -42,7 +43,7 @@ export default function ChatRoom({ classCode, userName: propUserName, onClose })
     };
   }
 
-  // 1. Load chat history (optional endpoint)
+  // 1. Load chat history
   useEffect(() => {
     setLoadingHistory(true);
     fetch(`${API_BASE}/chat/${encodeURIComponent(classCode)}/history`, {
@@ -69,7 +70,7 @@ export default function ChatRoom({ classCode, userName: propUserName, onClose })
 
 //Create socket when component mounts; cleanup on unmount
   useEffect(() => {
-    // create socket instance per component so we avoid early attempts to connect to Vite dev server
+    
     const s = io(SOCKET_URL, {
       transports: ['websocket', 'polling'],
       auth: { token: token || '' }, // optional: send token in auth
@@ -83,11 +84,12 @@ export default function ChatRoom({ classCode, userName: propUserName, onClose })
     const onReceive = (msg) => {
       setMessages(prev => [...prev, normalizeMsg(msg)]);
     };
-    const onSystem = (txt) => {
+    
+    const onSystem = (txt) =>{
       setMessages(prev => [...prev, { senderName: 'System', text: txt, timestamp: new Date().toISOString() }]);
     };
+  
     const onBan = (payload) => {
-      // payload might be { until, reason } or a string
       let until = null, reason = 'Violation';
       if (payload && typeof payload === 'object') {
         until = payload.until ? new Date(payload.until) : null;

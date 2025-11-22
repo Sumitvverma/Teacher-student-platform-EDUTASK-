@@ -1,67 +1,92 @@
 // src/components/Frontpage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Footer.css';
+import '../styles/Footer.css';  // only footer css is used, keep it
 
 const Frontpage = () => {
   const navigate = useNavigate();
 
   return (
-  <div style={styles.container}>
-  <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-dark border-bottom border-body" data-bs-theme="dark">
-    <div className="container-fluid">
-      <a className="navbar-brand">MyApp</a>
+    <div style={styles.container}>
 
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      {/* NAVBAR */}
+      <nav className="navbar navbar-expand-lg fixed-top" style={styles.navbar}>
+        <div className="container-fluid">
 
-      <div className="collapse navbar-collapse" id="navbarScroll">
-        {/* Left side - Home & Signup */}
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => navigate('/Home')}>Home</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => navigate('/About')}>About</a>
-          </li>
-        </ul>
+          <a className="navbar-brand" style={styles.brand}>Edutask</a>
 
-        {/* Right side - Login */}
-        <ul className="navbar-nav mb-2 mb-lg-0" style={{ margin: '10px'}}>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => navigate('/Login')}>Login</a>
-          </li>
-          <li className="nav-item dropdown">
-  <a
-    className="nav-link dropdown-toggle"
-    href="#"
-    role="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    Register
-  </a>
-  <ul className="dropdown-menu" style={{width:"65px"}}>
-    <li>
-      <a className="dropdown-item" onClick={() => navigate('/register')}>
-        As a Doctor
-      </a>
-    </li>
-  </ul>
-</li>
-        </ul>
-      </div>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarScroll">
+
+            {/* LEFT LINKS */}
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li className="nav-item">
+                <a className="nav-link" style={styles.navLink} onClick={() => navigate('/Home')}>
+                  Home
+                </a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" style={styles.navLink} onClick={() => navigate('/About')}>
+                  About
+                </a>
+              </li>
+
+            </ul>
+
+            {/* RIGHT LINKS */}
+            <ul className="navbar-nav mb-2 mb-lg-0" style={{ margin: "10px" }}>
+
+              <li className="nav-item">
+                <a className="nav-link" style={styles.navLink} onClick={() => navigate('/Login')}>
+                  Login
+                </a>
+              </li>
+
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={styles.navLink}
+                >
+                  Register
+                </a>
+
+                <ul className="dropdown-menu" style={{ width: "140px" }}>
+                  <li>
+                    <a className="dropdown-item" onClick={() => navigate('/register')}>
+                       Student/Teacher
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
     </div>
-  </nav>
-</div>
-
   );
 };
 
+
+
+
+
+
+// FOOTER COMPONENT
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ marginTop: "500px" }}>
       <div className="container">
         <div className="row">
           <div className="footer-col">
@@ -73,17 +98,18 @@ const Footer = () => {
               <li><a href="#">Affiliate Program</a></li>
             </ul>
           </div>
+
           <div className="footer-col">
             <h4>Get Help</h4>
             <ul>
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
+
+          <div className="footer-col"></div>
+
           <div className="footer-col">
-            
-          </div>
-          <div className="footer-col">
-            <h4>Follow us</h4>
+            <h4>Follow Us</h4>
             <div className="social-links">
               <a href="#"><i className="fab fa-facebook-f"></i></a>
               <a href="#"><i className="fab fa-twitter"></i></a>
@@ -91,6 +117,7 @@ const Footer = () => {
               <a href="#"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
+
         </div>
       </div>
     </footer>
@@ -99,28 +126,36 @@ const Footer = () => {
 
 
 
+
+
+// ===================== INLINE STYLES ===================== //
 const styles = {
   container: {
-    height: "200vh",
-    display: "flex",
-    justifyContent: "center",  
-    alignItems: "center",      
-    backgroundColor: "#f2f2f2",
+    height: "100vh",
+    width: "100%",
+     paddingBottom: "200px",
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   },
-  form: {
-    padding: "20px",
-    backgroundColor: "white",
-    boxShadow: "0 0 10px rgba(7, 8, 3, 0.1)",
-    borderRadius: "8px"
-  }
+
+  navbar: {
+    backgroundColor: "#064420",        // Dark green
+    borderBottom: "2px solid #032d14",
+  },
+
+  brand: {
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+
+  navLink: {
+    color: "white",
+    cursor: "pointer",
+  },
 };
-
-
-
-
-
-
-
-
 
 export { Frontpage, Footer };
