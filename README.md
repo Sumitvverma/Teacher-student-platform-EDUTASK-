@@ -11,7 +11,7 @@ A streamlined web app connecting teachers and students for assignment tracking a
 * Frontend: React.js / Tailwind CSS
 * Backend: Node.js / Express.js
 * Database: MongoDB
-
+ 
 ## Quick Start## 1. Setup
 
 git clone https://github.com
