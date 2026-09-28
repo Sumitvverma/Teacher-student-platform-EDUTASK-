@@ -1,17 +1,17 @@
-# Healthup – Healthcare Management System
+# Edutask – Teacher–Student Platform
 
-Full-stack healthcare platform connecting doctors and patients.
+Full-stack platform for managing classes, homework, attendance, grades, and communication.
 
 ## Features
-- Secure doctor & patient authentication
-- Real-time appointment booking
-- Appointment conflict prevention
-- Braintree payment integration
-- Prescription management
-- Medicine search using Trie + Levenshtein distance
+- JWT authentication & role-based dashboards
+- Unique class-code enrollment
+- Homework & grade management
+- Geofenced attendance
+- Real-time chat using Socket.io
+- Profanity filtering & moderation
 
 ## Tech Stack
-React.js • Node.js • Express.js • MongoDB • Bootstrap • Braintree • DSA
+React.js • Node.js • Express.js • MongoDB • Socket.io • JWT • Bootstrap
 
 ## Author
 Sumit Verma | IIT (BHU), Varanasi
